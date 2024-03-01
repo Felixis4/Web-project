@@ -40,35 +40,61 @@
     .center-button {
       text-align: center;
     }
+    .form-floating {
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      width: 100%; 
+    }
+
+    #floatingInput {
+      flex-grow: 1;
+      margin-right: 10px; 
+    }
+
+    #button-submit {
+      white-space: nowrap;
+    }
+
 
   </style>
 
 </head>
 
 <body>
+  
   <div class="container py-2 m-2 align-items-center" style="width: 100px;background: #000;border-radius: 10px;float:left;">
       <a href="/" class="btn btn-danger btn-sm">Back</a>
   </div>
+
   <br><br>
-  <div class="container fluid center-button w-100 px-3 py-2">
-    
+
+  <div id="content-box" class="container-fluid " style=" background: #1F1B3C; height: calc(100vh - 130px); overflow-y: scroll;">
+  
+  </div>
+  <div class="container-fluid center-button w-100 px-3" style=""> 
     <div class="form-floating mb-3">
       <input id="floatingInput" type="text" name="input" class="form-control" placeholder="ask">
-      <label for="question" class="form-label">Ask Me!</label>
+      <label for="floatingInput" class="form-label">Ask Me!</label>
+      <button class="btn btn-success" id="button-submit" aria-hidden="true">Send</button>
     </div>
-
-    <div id="button-submit" class="text-center">
-      <i class="btn btn-success" aria-hidden="true">Send</i>
-    </div>
-    
   </div>
+  <script>
+    document.addEventListener('keydown',function (evento) {
+      if (evento.keyCode === 13) {
+        var boton = document.getElementById('button-submit');
+        boton.click();
+      }
+    });
+  </script>
   <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
     crossorigin="anonymous"></script>
   <script>
     $('#button-submit').on('click', function () {
       var $value = $('#floatingInput').val();
-      $('#content-box').append('<div class="mb-2 p-4"> <div class="float-right px-3 py-2" style="width: 270px;background: hsl(225,100%,40%);border-radius: 10px;float: right;font-size 85%;"> ' + $value + ' </div> <div style="clear:both;"></div> </div>');
-      
+      $('#content-box').append('<div class="p-4 l-flex mb-2"> <div class="float-right p-3" style="width: 270px;background: hsl(225,100%,40%);border-radius: 10px;float: right;font-size 85%;"> ' + $value + ' </div> <div style="clear:both;"></div> </div>');
+      $('#content-box').scrollTop($('#content-box').prop('scrollHeight'));
+
       $.ajax({
         type:'post',
         url: '{{ url('send') }}',
@@ -79,8 +105,12 @@
           xhr.setRequestHeader('X-CSRF-TOKEN', $('meta[name="csrf-token"]').attr('content'));
         },
         success:function(data){
-          $('#content-box').append('<div class="p-4 d-flex mb-2"> <div class="p-3 text-primary-emphasis rounded-2" style="background: hsl(195,75%,75%);" > '+data+' </div> </div>');
+          var chatBox = $('#content-box')
+
+          chatBox.append('<div class="p-4 d-flex mb-2"> <div class="float-left p-3 text-primary-emphasis rounded-2" style="background: hsl(195,75%,75%);float: left;" > '+data+' </div> </div>');
           $value = $('#floatingInput').val('');
+          chatBox.scrollTop(chatBox.prop('scrollHeight'));
+
         }
       });
     });

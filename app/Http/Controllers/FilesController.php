@@ -15,7 +15,7 @@ class FilesController extends Controller
         echo 'File Name:' . $file->getClientOriginalName();
         $destinationPath = "uploads";
         if ($file->move($destinationPath, $file->getClientOriginalName())){
-            return redirect()->route('upload')->with('success', 'File Uploaded successfully');
+            return redirect()->route('/upload')->with('success', 'File Uploaded successfully');
         }
         else{
             echo "Falied to upload file";

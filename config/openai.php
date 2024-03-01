@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'api_key' => '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',
+    'api_key' => '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',
 ];

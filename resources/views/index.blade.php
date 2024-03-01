@@ -37,17 +37,19 @@
 <div class="align-items-center center-button">
   <h1 id="title" class="text-center p-4 mt-4">Wellcome To Belgrano Explorer!</h1>
   <h4 id="sub-title" class="text-center">Who Are You?</h4>
-  <div class="container col-md-5 col-md-offset-3 p-4 mt-4">
-    <div class="form-floating mb-3">
-        <input type="email" class="form-control mb-3" name="email" id="floatingInput" placeholder="name@example.com">
-        <label for="floatingInput">Email address</label>
+  <div class="container-fluid">
+    <div class="container col-md-5 col-md-offset-3 p-4 mt-4">
+      <div class="form-floating mb-3">
+          <input type="email" class="form-control mb-3" name="email" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Email address</label>
+      </div>
+      <div class="form-floating">
+          <input type="username" class="form-control mb-3" name="username" id="floatingInput" placeholder="Username">
+          <label for="floatinInput">Username</label>
+      </div>
+      <input type="submit" value="Log-in" class="btn btn-primary my-2" />
     </div>
-    <div class="form-floating">
-        <input type="username" class="form-control mb-3" name="username" id="floatingInput" placeholder="Username">
-        <label for="floatinInput">Username</label>
-    </div>
-    <input type="submit" value="Log-in" class="btn btn-primary my-2" />
-</div>
+  </div>
   <h4 id="sub-title" class="text-center">Don't have an account?
     <a class="btn btn-link" href="/create-user" role="button" >Create User</a>
   </h4>

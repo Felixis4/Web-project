@@ -11,7 +11,7 @@ class AccountsController extends Controller
     {
         $accounts = account::all();
 
-        return view('enter.log-in', ['accounts' => $accounts]);
+        return view('log-in', ['accounts' => $accounts]);
     }
 
     public function store(Request $request){
@@ -43,7 +43,7 @@ class AccountsController extends Controller
 
     public function show($id){
         $account = account::find($id);
-        return view('enter.show', ['accounts' => $account]);
+        return view('show', ['accounts' => $account]);
     }
 
     public function update(Request $request, $id){
@@ -57,6 +57,6 @@ class AccountsController extends Controller
     }
     public function users_list(){
         $accounts = Account::all(); 
-        return view('enter.list-users', compact('accounts'));
+        return view('list-users', compact('accounts'));
     }
 }
