@@ -1,5 +1,6 @@
 @extends('myapp')
 @section('content')
+@section('title', 'Upload File')
 <div class="container py-2 m-2 align-items-center" style="width: 100px;background: #000;border-radius: 10px;float:left;">
     <a href="/" class="btn btn-danger btn-sm">Back</a>
 </div>

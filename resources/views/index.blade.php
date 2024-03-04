@@ -1,6 +1,6 @@
 @extends('myapp')
 @section('content')
-
+  
 <nav id="navbar" class="navbar navbar-expand-lg mb-3 bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">Belgrano Explorer</a>
@@ -11,18 +11,25 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/ask-me-a-question">Ask me a question!</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/create-user">Create User</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/users-list">Users List</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/upload-file">Upload File</a>
-        </li>
+        @auth
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/ask-me-a-question">Ask me a question!</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/upload-file">Upload File</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Log out</a>
+          </li>
+        @else
+          <li class="nav-item">
+            <a class="nav-link" href="/registration">Create User</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Log-in</a>
+          </li>
+        @endauth
+
       </ul>
 
       <form class="d-flex" role="search">
@@ -34,30 +41,23 @@
   </div>
 </nav>
 
-<div class="align-items-center center-button">
-  <h1 id="title" class="text-center p-4 mt-4">Wellcome To Belgrano Explorer!</h1>
-  <h4 id="sub-title" class="text-center">Who Are You?</h4>
-  <div class="container-fluid">
-    <div class="container col-md-5 col-md-offset-3 p-4 mt-4">
-      <div class="form-floating mb-3">
-          <input type="email" class="form-control mb-3" name="email" id="floatingInput" placeholder="name@example.com">
-          <label for="floatingInput">Email address</label>
-      </div>
-      <div class="form-floating">
-          <input type="username" class="form-control mb-3" name="username" id="floatingInput" placeholder="Username">
-          <label for="floatinInput">Username</label>
-      </div>
-      <input type="submit" value="Log-in" class="btn btn-primary my-2" />
-    </div>
-  </div>
-  <h4 id="sub-title" class="text-center">Don't have an account?
-    <a class="btn btn-link" href="/create-user" role="button" >Create User</a>
-  </h4>
-</div>
+<h1 id="title" class="text-center p-4 mt-4">Wellcome To Belgrano Explorer <br>
+  @auth
+  {{auth()->user()->name}}!
+  @endauth
+  
+</h1>
+
 
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header" sytle="color: #fff;">
-    <h5 class="offcanvas-title"  id="offcanvasExampleLabel"> <p style="color: #000">Profile</p></h5>
+    <h5 class="offcanvas-title"  id="offcanvasExampleLabel">
+      <p style="color: #000">
+      @auth
+        {{auth()->user()->name}}
+      @endauth
+      </p>
+    </h5>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
 
