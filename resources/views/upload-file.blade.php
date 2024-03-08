@@ -1,11 +1,11 @@
 @extends('myapp')
 @section('content')
 @section('title', 'Upload File')
-<div class="container py-2 m-2 align-items-center" style="width: 100px;background: #000;border-radius: 10px;float:left;">
+<div id="back-button" class="container py-2 m-2 align-items-center">
     <a href="/" class="btn btn-danger btn-sm">Back</a>
 </div>
 <br><br>
-<div class="container col-md-5 col-md-offset-3 p-4 mt-4 " style="background: #000;border-radius: 10px;float: centers;">
+<div id="file-container" class="container col-md-5 col-md-offset-3 p-4 mt-4">
     <div class="form-floating mb-3">
         @csrf
         @if (session('success'))
@@ -19,11 +19,6 @@
                 <input type="submit" value="Update file" class="btn btn-primary my-2" />
             </div>
         </form>
-    </div>
-</div>
-<div class="container col-md-5 col-md-offset-3 p-4 mt-4 " style="background: #000;border-radius: 10px;float: centers;">
-    <div style="color: #fff;">
-        waiting for file...
     </div>
 </div>
 @endsection

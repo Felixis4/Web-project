@@ -13,20 +13,20 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         @auth
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/ask-me-a-question">Ask me a question!</a>
+            <a class="nav-link p-2" href="/ask-me-a-question">Ask me a question!</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/upload-file">Upload File</a>
+            <a class="nav-link p-2" href="/upload-file">Upload File</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/logout">Log out</a>
+            <a class="nav-link p-2" href="/logout">Log out</a>
           </li>
         @else
           <li class="nav-item">
-            <a class="nav-link" href="/registration">Create User</a>
+            <a class="nav-link p-2" href="/registration">Create User</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/login">Log-in</a>
+            <a class="nav-link p-2" href="/login">Log-in</a>
           </li>
         @endauth
 
@@ -50,9 +50,9 @@
 
 
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-  <div class="offcanvas-header" sytle="color: #fff;">
+  <div class="offcanvas-header">
     <h5 class="offcanvas-title"  id="offcanvasExampleLabel">
-      <p style="color: #000">
+      <p>
       @auth
         {{auth()->user()->name}}
       @endauth

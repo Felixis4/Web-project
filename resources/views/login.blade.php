@@ -1,11 +1,12 @@
 @extends('myapp')
 @section('content')
 @section('title', 'Login')
-<div class="container py-2 m-2 align-items-center" style="width: 100px;background: #000;border-radius: 10px;float:left;">
-      <a href="/" class="btn btn-danger btn-sm">Back</a>
-  </div>
 
-  <br><br>
+<div id="back-button" class="container py-2 m-2 align-items-center">
+    <a href="/" class="btn btn-danger btn-sm">Back</a>
+</div>
+<br><br>
+
 <div class="container col-5 py-2 m">
     <div class="mt-5">
         @if ($errors->any())
